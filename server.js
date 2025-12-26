@@ -1,14 +1,19 @@
+import 'dotenv/config';
 import { connectDatabase } from "./src/config/database.js";
 import app from "./src/app.js";
 
-connectDatabase()
-    .then(()=>{
-        console.log("Conectado a mongo")
+const PORT = process.env.PORT || 3000;
 
-        app.listen(3000, () => {
-            console.log("Desplegado en puerto 3000")
+connectDatabase()
+    .then(() => {
+        console.log("✅ MongoDB conectado")
+
+        app.listen(PORT, () => {
+            console.log(`🚀 Server en puerto ${PORT}`)
+            console.log(`📍 Environment: ${process.env.NODE_ENV || 'development'}`)
         })
     })
-    .catch(()=>{
-        console.log("Error al conectarse a mongo")
+    .catch((err) => {
+        console.error("❌ Error MongoDB:", err.message)
+        process.exit(1)
     });
