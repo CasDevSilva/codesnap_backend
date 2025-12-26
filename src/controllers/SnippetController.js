@@ -48,6 +48,9 @@ export const generateSnippet = async (request, response, next) => {
             language: mNewEntity.language,
             theme: mNewEntity.theme,
             font: mNewEntity.font,
+            padding: mNewEntity.padding,
+            background: mNewEntity.background,
+            shadow: mNewEntity.shadow,
             imageBase64: mNewEntity.imageBase64
         });
     } catch (error) {
